@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from book.views import BookDetailView, BookListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^all-books/', BookListView.as_view(), name='book-list'),
+    url(r'^book/(?P<pk>\d+)$', BookDetailView.as_view(), name='book-detail'),
 ]
